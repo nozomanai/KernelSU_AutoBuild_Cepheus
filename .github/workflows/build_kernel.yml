@@ -43,6 +43,7 @@ jobs:
       - name: build kernel
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          rm .git -R
           ls -l
           bash build.sh
 
