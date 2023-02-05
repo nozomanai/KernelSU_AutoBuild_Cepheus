@@ -31,10 +31,6 @@ jobs:
           cd workspace
           pwd
           ls -l
-          cp ./* $GITHUB_WORKSPACE
-          cd $GITHUB_WORKSPACE
-          echo " ========== "
-          ls -l
         
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -43,4 +39,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            *.jar
+            kernel_workspace/workspace/*.jar
