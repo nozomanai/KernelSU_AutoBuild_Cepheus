@@ -32,7 +32,7 @@ jobs:
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          automatic_release_tag: "${{DATE}}"
+          automatic_release_tag: "${{echo date}}"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
