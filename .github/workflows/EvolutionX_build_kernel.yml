@@ -85,4 +85,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            out/*.zip
+            kernel_workspace/android-kernel/out/*.zip
