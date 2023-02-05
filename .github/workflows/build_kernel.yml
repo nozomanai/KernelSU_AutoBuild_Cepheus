@@ -34,7 +34,7 @@ jobs:
       - name: download kernel source
         run: |
           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
-          git clone 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus' -b 13.0 android-kernel --depth=1
+          git clone 'https://github.com/nozomanai/crDroid-android_kernel_xiaomi_cepheus.git' -b 13.0 android-kernel --depth=1
           
 #       - name: setup build kernel environment
 #         run: |
