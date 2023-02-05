@@ -71,16 +71,12 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           rm .git -R
-          
-          #rename
-          
           sudo bash build.sh
           
       - name: rename
         run: |
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ github.event.inputs.KERNEL_NAME}}-$DATE/g' build.sh
-          cat build.sh
 
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
