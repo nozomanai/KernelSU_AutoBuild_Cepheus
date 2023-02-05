@@ -27,7 +27,10 @@ jobs:
       - name: Run a one-line script
         run: |
           cd $GITHUB_WORKSPACE
-        
+          mkdir workspace
+          cd workspace
+          git clone https://github.com/bywhat/XposedBridgeApi workspace --depth=1
+          ls -l
         
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -36,4 +39,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            *.sh
+            *.jar
