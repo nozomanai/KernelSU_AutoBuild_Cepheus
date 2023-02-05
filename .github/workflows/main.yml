@@ -26,9 +26,10 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
           git clone https://github.com/bywhat/XposedBridgeApi workspace --depth=1
           cd workspace
+          pwd
           ls -l
         
       - name: release
