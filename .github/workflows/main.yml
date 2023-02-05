@@ -31,6 +31,10 @@ jobs:
           cd workspace
           pwd
           ls -l
+          cp ./* $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE
+          echo " ========== "
+          ls -l
         
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
