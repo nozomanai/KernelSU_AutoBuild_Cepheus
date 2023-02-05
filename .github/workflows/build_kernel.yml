@@ -44,6 +44,6 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           rm .git -R
-          ls -l
+          apt list
           bash build.sh
 
