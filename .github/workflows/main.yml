@@ -27,9 +27,8 @@ jobs:
       - name: Run a one-line script
         run: |
           cd $GITHUB_WORKSPACE
-          mkdir workspace
-          cd workspace
           git clone https://github.com/bywhat/XposedBridgeApi workspace --depth=1
+          cd workspace
           ls -l
         
       - name: release
