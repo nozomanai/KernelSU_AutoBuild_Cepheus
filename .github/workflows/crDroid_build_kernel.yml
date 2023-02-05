@@ -45,44 +45,54 @@ jobs:
       - uses: actions/checkout@v3
       
       
-      - name: download kernel source
-        run: |
-          cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
-          git clone ${{ github.event.inputs.KERNEL_SOURCE }} -b ${{ github.event.inputs.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+#       - name: download kernel source
+#         run: |
+#           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
+#           git clone ${{ github.event.inputs.KERNEL_SOURCE }} -b ${{ github.event.inputs.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
           
 
-      - name: delete yaml scrpit 
-        run: |
-          rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
-          cp $GITHUB_WORKSPACE/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
+#       - name: delete yaml scrpit 
+#         run: |
+#           rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
+#           cp $GITHUB_WORKSPACE/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
         
-      - name: add kernelsu 
-        run: |
-            cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+#       - name: add kernelsu 
+#         run: |
+#             cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
             
-            echo "CONFIG_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
-            echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
-            echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
+#             echo "CONFIG_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
+#             echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
+#             echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
             
-            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+#             curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         
         
-      - name: build kernel
-        run: |
-          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-          rm .git -R
-          sudo bash build.sh
+#       - name: build kernel
+#         run: |
+#           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+#           rm .git -R
+#           sudo bash build.sh
           
+#       - name: rename
+#         run: |
+#           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+#           sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ github.event.inputs.KERNEL_NAME}}-$DATE/g' build.sh
+
+#       - name: release
+#         uses: "marvinpinto/action-automatic-releases@latest"
+#         with:
+#           automatic_release_tag: "latest"
+#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#           prerelease: false
+#           files: |
+#             out/*.zip
+
       - name: rename
         run: |
-          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          cd $GITHUB_WORKSPACE
           sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ github.event.inputs.KERNEL_NAME}}-$DATE/g' build.sh
-
-      - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          automatic_release_tag: "latest"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            out/*.zip
+          sed -i '/supported.versions.*/d' anykernel.sh
+          sed -i '/do.devicecheck.*/d' anykernel.sh
+          cat build.sh
+          echo "=========================="
+          cat anykernel.sh
