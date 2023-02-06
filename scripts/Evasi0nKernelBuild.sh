@@ -2,7 +2,7 @@ echo param test
 KERNEL_SOURCE=$0
 echo $KERNEL_SOURCE
 KERNEL_SOURCE_BRANCH=$1
-echo $KERNEL_SOURCE_BRANCH
+echo $KERNEL_SOURCE_BRANCH 分支
 
 
 # echo download kernel source
