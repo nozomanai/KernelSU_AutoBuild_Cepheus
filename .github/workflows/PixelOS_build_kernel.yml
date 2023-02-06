@@ -30,7 +30,7 @@ on:
       
       KERNEL_NAME:
         required: false
-        default: 'EvolutionX'
+        default: 'PixelOS'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
