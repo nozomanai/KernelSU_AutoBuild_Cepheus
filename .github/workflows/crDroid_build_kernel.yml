@@ -1,7 +1,5 @@
 name: crDroid_build_kernel
 
-# Controls when the workflow will run
-
 env:
   KERNEL_SOURCE: 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: '13.0'
