@@ -9,7 +9,7 @@ env:
   KERNEL_SOURCE_BRANCH: '13.0'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
   KERNEL_NAME: 'crDroid'
-
+ 
 on:
   schedule:
     - cron: '*/5  * * * *'
