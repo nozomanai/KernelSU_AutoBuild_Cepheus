@@ -45,13 +45,15 @@ jobs:
       
       - name: run build script
         run: |
-          bash scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
+          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
+          #bash scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
+          echo dwa
           
-#       - name: release
-#         uses: "marvinpinto/action-automatic-releases@latest"
-#         with:
-#           automatic_release_tag: "latest"
-#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-#           prerelease: false
-#           files: |
-#             kernel_workspace/android-kernel/out/*.zip
+      - name: release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          automatic_release_tag: "${{ env.BUILD_TIME }}"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            kernel_workspace/android-kernel/out/*.zip
