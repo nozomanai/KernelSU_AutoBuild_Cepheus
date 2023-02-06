@@ -15,6 +15,7 @@ git clone $KERNEL_SOURCE -b $KERNEL_SOURCE_BRANCH android-kernel --depth=1
 echo delete yaml scrpit
 rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
 cp $GITHUB_WORKSPACE/patch/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
+ls $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc -l
 
 echo add kernelsu
 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
@@ -30,9 +31,10 @@ sed -i '/do.devicecheck.*/d' anykernel.sh
 
 sed -i "s/KERNEL_NAME=.*/KERNEL_NAME=${KERNEL_NAME}-"$(date "+%Y%m%d%H%M%S")"/g" build.sh
 
+cat build.sh
 
 
-echo build kernel
-cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-rm .git -R
-sudo bash build.sh
+# echo build kernel
+# cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+# rm .git -R
+# sudo bash build.sh
