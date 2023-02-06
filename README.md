@@ -1,6 +1,6 @@
 # KernelSU_AutoBuild_Cepheus
 
-Automatically build every 3 days
+Automatically build kernel every 3 days
 
 support rom:
 - crDroid 
