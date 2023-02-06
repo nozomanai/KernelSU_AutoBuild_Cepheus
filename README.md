@@ -2,7 +2,7 @@
 
 Automatically build kernel every 3 days
 
-support rom:
+build object:
 - crDroid 
 - PixelExperience  
 - PixelOS 
