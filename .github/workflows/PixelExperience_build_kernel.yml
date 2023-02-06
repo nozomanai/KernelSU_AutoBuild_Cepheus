@@ -21,11 +21,20 @@ jobs:
           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
           git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
           
-      - name: delete yaml scrpit 
+      - name: kernel patch 
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          
           rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
-          cp $GITHUB_WORKSPACE/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
+          cp $GITHUB_WORKSPACE/patch/EcrosoftXiao_kernel/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
+          
+          sed -i '/supported.versions.*/d' anykernel.sh
+          sed -i '/do.devicecheck.*/d' anykernel.sh
+          
+          #sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ env.KERNEL_NAME}}-$DATE/g' build.sh
+          sed -i "s/KERNEL_NAME=.*/KERNEL_NAME=${{env.KERNEL_NAME}}-"$(date "+%Y%m%d%H%M%S")"/g" build.sh
+          cat build.sh
+        
         
       - name: add kernelsu 
         run: |
@@ -40,17 +49,6 @@ jobs:
             git clone https://github.com/nozomanai/KernelSU.git
             bash KernelSU/kernel/setup.sh
             
-            
-      - name: change build config
-        run: |
-          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-          sed -i '/supported.versions.*/d' anykernel.sh
-          sed -i '/do.devicecheck.*/d' anykernel.sh
-          
-          #sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ env.KERNEL_NAME}}-$DATE/g' build.sh
-          sed -i "s/KERNEL_NAME=.*/KERNEL_NAME=${{env.KERNEL_NAME}}-"$(date "+%Y%m%d%H%M%S")"/g" build.sh
-          cat build.sh
-
       - name: build kernel
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
