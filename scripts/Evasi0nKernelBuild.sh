@@ -29,8 +29,8 @@ sed -i '/supported.versions.*/d' anykernel.sh
 sed -i '/do.devicecheck.*/d' anykernel.sh
 
 sed -i 's/DATE=.*/DATE=$(date "+%Y%m%d%H%M%S")/g' build.sh
-sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=$KERNEL_NAME-$DATE/g' build.sh
-
+sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=$(KERNEL_NAME)-$DATE/g' build.sh
+cat build.sh
 
 echo build kernel
 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
