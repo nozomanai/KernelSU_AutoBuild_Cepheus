@@ -40,10 +40,7 @@ jobs:
     runs-on: ubuntu-22.04
   
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
+    steps:      
       
       - name: Use local my-action
         uses: ./.github/workflows/common_build.yml
