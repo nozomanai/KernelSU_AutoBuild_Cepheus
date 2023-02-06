@@ -46,4 +46,4 @@ jobs:
       
       
       - name: Use local my-action
-        uses: ./.github/workflows/common_build
+        uses: ./.github/workflows/common_build.yml
