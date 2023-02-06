@@ -46,7 +46,7 @@ jobs:
 
       - name: dTest
         run: |
-          mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
+          sudo mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
           cd /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure
           pwd
       
