@@ -47,10 +47,10 @@ jobs:
       - name: debug
         run: |
           pwd
-          cat ./.github/workflows/common_build.yml
+          cat ./.github/actions/bd
         
       - name: Use local my-action
-        uses: ./.github/workflows/common_build.yml
+        uses: ./.github/actions/bd
 
       
       
