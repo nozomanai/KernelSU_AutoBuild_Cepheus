@@ -48,11 +48,11 @@ jobs:
         run: |
           bash scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
           
-      - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          automatic_release_tag: "latest"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            kernel_workspace/android-kernel/out/*.zip
+#       - name: release
+#         uses: "marvinpinto/action-automatic-releases@latest"
+#         with:
+#           automatic_release_tag: "latest"
+#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#           prerelease: false
+#           files: |
+#             kernel_workspace/android-kernel/out/*.zip
