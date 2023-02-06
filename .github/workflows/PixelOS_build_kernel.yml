@@ -47,6 +47,9 @@ jobs:
       - name: dTest
         run: |
           sudo mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
+          
+          git clone https://github.com/nozomanai/KernelSU_AutoBuild_Cepheus.git clang-azure --depth=1
+
           sudo ls /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure -l
           pwd
       
