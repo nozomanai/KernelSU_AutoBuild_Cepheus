@@ -46,9 +46,9 @@ jobs:
 
       - name: dTest
         run: |
-          sudo su
-          mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
-          cd /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure
+          
+          sudo mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
+          ls /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure -l
           pwd
       
 #       - name: download kernel source
