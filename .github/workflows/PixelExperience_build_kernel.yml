@@ -7,8 +7,8 @@ env:
   KERNEL_NAME: 'PixelExperience'
 
 on:
-  schedule:
-    - cron: '0 */4 * * *'
+#   schedule:
+#     - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
           echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
           bash scripts/Evasi0nKernelBuild.sh ${{env.KERNEL_SOURCE}} ${{env.KERNEL_SOURCE_BRANCH}} ${{env.KERNEL_DEFCONFIG}} ${{env.KERNEL_NAME}} 
           
-      - name: run build script
+      - name: kernel build
         run: |   
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           sudo bash build.sh
