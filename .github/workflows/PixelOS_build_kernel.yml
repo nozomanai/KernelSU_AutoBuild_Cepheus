@@ -24,6 +24,8 @@ jobs:
       - name: setup build kernel environment
         run: |
           pwd
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          pwd
           cp $GITHUB_WORKSPACE/patch/anykernel.sh $GITHUB_WORKSPACE/patch/build.sh $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           ls -l
           
