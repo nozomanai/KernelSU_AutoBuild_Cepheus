@@ -46,7 +46,7 @@ jobs:
       
       - name: run build script
         run: |
-          bash scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
+          sh scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
           
 #       - name: release
 #         uses: "marvinpinto/action-automatic-releases@latest"
