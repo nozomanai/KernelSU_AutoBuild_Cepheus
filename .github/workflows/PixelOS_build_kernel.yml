@@ -46,7 +46,7 @@ jobs:
 
       - name: dTest
         run: |
-          sudo chomd 777 /root
+          sudo chomd 777 /root -R
           mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
           ls /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure -l
           pwd
