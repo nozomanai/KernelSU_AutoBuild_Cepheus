@@ -49,7 +49,7 @@ jobs:
           sudo mkdir /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/ -p
           
           sudo git clone https://github.com/Panchajanya1999/azure-clang.git /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure --depth=1
-          mv /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/aarch64-linux-gnu /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/aarch64-linux-gnu-gcc
+          sudo mv /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/aarch64-linux-gnu /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure/aarch64-linux-gnu-gcc
 
           sudo ls /root/pixelos/prebuilts/clang/host/linux-x86/clang-azure -l
           
