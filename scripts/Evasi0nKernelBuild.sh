@@ -35,4 +35,4 @@ cat build.sh
 echo build kernel
 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
 rm .git -R
-sudo bash build.sh
+#sudo bash build.sh
