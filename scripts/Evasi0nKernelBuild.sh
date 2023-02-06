@@ -26,6 +26,7 @@ curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh
 
 echo change build config
 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+rm .git -R
 sed -i '/supported.versions.*/d' anykernel.sh
 sed -i '/do.devicecheck.*/d' anykernel.sh
 
@@ -36,5 +37,4 @@ cat build.sh
 
 # echo build kernel
 # cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-# rm .git -R
 # sudo bash build.sh
