@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Test
 
 # Controls when the workflow will run
 on:
@@ -24,19 +24,9 @@ jobs:
 
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: test1
         run: |
-          cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
-          git clone https://github.com/bywhat/XposedBridgeApi workspace --depth=1
-          cd workspace
           pwd
-          ls -l
-        
-      - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          automatic_release_tag: latest
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            kernel_workspace/workspace/*.jar
+          bash test.sh
+          
+      
