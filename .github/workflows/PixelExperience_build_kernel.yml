@@ -23,6 +23,7 @@ jobs:
           
       - name: delete yaml scrpit 
         run: |
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
           cp $GITHUB_WORKSPACE/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
         
