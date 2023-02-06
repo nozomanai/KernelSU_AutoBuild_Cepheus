@@ -3,10 +3,10 @@ KERNEL_SOURCE_BRANCH=$2
 KERNEL_DEFCONFIG=$3
 KERNEL_NAME=$4
 
-echo kernel source : $KERNEL_SOURCE
-echo kernel source bach : $KERNEL_SOURCE_BRANCH
-echo kernel defconfig : $KERNEL_DEFCONFIG
-echo kernel name : $KERNEL_NAME
+printf kernel source : $KERNEL_SOURCE
+printf kernel source bach : $KERNEL_SOURCE_BRANCH
+printf kernel defconfig : $KERNEL_DEFCONFIG
+printf kernel name : $KERNEL_NAME
 
 echo download kernel source
 cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
