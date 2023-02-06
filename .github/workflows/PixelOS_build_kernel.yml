@@ -46,7 +46,7 @@ jobs:
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
           rm .git -R
           sudo bash build.sh
-          
+          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
           
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
