@@ -2,13 +2,14 @@
 
 name: crDroid_build_kernel
 
+# Controls when the workflow will run
+
 env:
   KERNEL_SOURCE: 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: '13.0'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
   KERNEL_NAME: 'crDroid'
 
-# Controls when the workflow will run
 on:
   schedule:
     - cron: '*/5  * * * *'
@@ -20,11 +21,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-#     inputs:
-#       KERNEL_SOURCE: 
-#         description: 'Kernel Source'
-#         required: true
-#         default: 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus'
+    inputs:
+      KERNEL_SOURCE: 
+        description: 'Kernel Source'
+        required: true
+        default: 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus'
         
 #       KERNEL_SOURCE_BRANCH:
 #         description: 'Branch'
