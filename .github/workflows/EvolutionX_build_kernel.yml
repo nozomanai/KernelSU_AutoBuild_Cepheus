@@ -7,8 +7,8 @@ env:
   KERNEL_NAME: 'EvolutionX'
   
 on:
-  schedule:
-    - cron: '0 */4 * * *'
+#   schedule:
+#     - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   build:
