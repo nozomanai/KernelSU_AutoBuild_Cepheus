@@ -21,6 +21,11 @@ jobs:
           echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
           bash scripts/Evasi0nKernelBuild.sh ${{env.KERNEL_SOURCE}} ${{env.KERNEL_SOURCE_BRANCH}} ${{env.KERNEL_DEFCONFIG}} ${{env.KERNEL_NAME}} 
           
+      - name: run build script
+        run: |   
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          sudo bash build.sh
+          
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
