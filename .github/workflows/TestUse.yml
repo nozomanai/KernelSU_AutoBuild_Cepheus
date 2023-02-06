@@ -44,6 +44,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         
+      - name: debug
+        run: |
+          pwd
+        
       - name: Use local my-action
         uses: ./.github/workflows/common_build.yml
 
