@@ -1,32 +1,35 @@
-echo param test
 KERNEL_SOURCE=$1
-echo $KERNEL_SOURCE
 KERNEL_SOURCE_BRANCH=$2
-echo $KERNEL_SOURCE_BRANCH 分支
+KERNEL_DEFCONFIG=$3
+KERNEL_NAME=$4
 
+echo kernel source : $KERNEL_SOURCE
+echo kernel source bach : $KERNEL_SOURCE_BRANCH
+echo kernel defconfig : $KERNEL_DEFCONFIG
+echo kernel name : $KERNEL_NAME
 
-# echo download kernel source
-# cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
-# git clone ${{ github.event.inputs.KERNEL_SOURCE }} -b ${{ github.event.inputs.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+echo download kernel source
+cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
+git clone $KERNEL_SOURCE -b $KERNEL_SOURCE_BRANCH android-kernel --depth=1
 
-# echo delete yaml scrpit
-# rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
-# cp $GITHUB_WORKSPACE/patch/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
+echo delete yaml scrpit
+rm $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc/yamltree.c
+cp $GITHUB_WORKSPACE/patch/scripts/dtc/* $GITHUB_WORKSPACE/kernel_workspace/android-kernel/scripts/dtc
 
-# echo add kernelsu
-# cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-# echo "CONFIG_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
-# echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
-# echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}
-# curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+echo add kernelsu
+cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+echo "CONFIG_KPROBES=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
+echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
+echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 
-# echo change build config
-# cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-# sed -i '/supported.versions.*/d' anykernel.sh
-# sed -i '/do.devicecheck.*/d' anykernel.sh
-# sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=${{ github.event.inputs.KERNEL_NAME}}-$DATE/g' build.sh
+echo change build config
+cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+sed -i '/supported.versions.*/d' anykernel.sh
+sed -i '/do.devicecheck.*/d' anykernel.sh
+sed -i 's/KERNEL_NAME=.*/KERNEL_NAME=$KERNEL_NAME-$DATE/g' build.sh
 
-# echo build kernel
-# cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-# rm .git -R
-# sudo bash build.sh
+echo build kernel
+cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+rm .git -R
+sudo bash build.sh
