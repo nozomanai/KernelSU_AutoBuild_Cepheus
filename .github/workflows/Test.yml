@@ -57,4 +57,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            /kernel_workspace/android-kernel/*.md
+            kernel_workspace/android-kernel/*.md
