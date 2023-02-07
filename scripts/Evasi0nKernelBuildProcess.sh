@@ -23,9 +23,8 @@ echo "CONFIG_KPROBES=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
 echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
 echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/$KERNEL_DEFCONFIG
 
-#curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
-git clone https://github.com/nozomanai/KernelSU.git
-bash KernelSU/kernel/setup.sh
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+
 
 echo change build config
 cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
