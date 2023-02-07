@@ -1,10 +1,11 @@
 # KernelSU_AutoBuild_Cepheus
 
-Automatically build kernel every 3 days
+每天 0:00 促发一次编译操作
 
-build object:
+支持小米9 ROM:
 - crDroid 
 - PixelExperience  
 - EvolutionX 
+- PixelOS
 
-all rom android version is 13
+所有内核均为安卓13版本
