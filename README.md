@@ -10,3 +10,12 @@
 - PixelOS
 
 所有内核均为安卓13版本
+
+source：
+https://github.com/tiann/KernelSU
+https://github.com/xiaoleGun/KernelSU_Action
+https://github.com/EcrosoftXiao/kernel_xiaomi_cepheus
+https://github.com/raystef66/android_kernel_xiaomi_cepheus
+https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus
+https://github.com/balgxmr/kernel_xiaomi_cepheus
+
