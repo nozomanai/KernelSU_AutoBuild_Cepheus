@@ -4,12 +4,11 @@ env:
   KERNEL_SOURCE: 'https://github.com/crdroidandroid/android_kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: '13.0'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
-  KERNEL_NAME: 'crDroid'
+  KERNEL_NAME: 'crDroid-cepheus'
   
 on:
   schedule:
-    - cron: '0 */1 * * *'
-#     - cron: '0 */4 * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   build:
