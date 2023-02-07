@@ -33,4 +33,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            kernel_workspace/android-kernel/out/*.zip
+            $GITHUB_WORKSPACE/kernel_workspace/android-kernel/out/*.zip
