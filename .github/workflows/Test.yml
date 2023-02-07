@@ -47,7 +47,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
           git clone https://github.com/nozomanai/KernelSU_AutoBuild_Cepheus android-kernel --depth=1
-          cd $GITHUB_WORKSPACE
+          #cd $GITHUB_WORKSPACE
           ls -l
           pwd
       - name: release
