@@ -47,7 +47,9 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
           git clone $KERNEL_SOURCE -b $KERNEL_SOURCE_BRANCH android-kernel --depth=1
-          
+          cd $GITHUB_WORKSPACE
+          ls -l
+          pwd
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -55,4 +57,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            "${{GITHUB_WORKSPACE}}"/kernel_workspace/android-kernel/*.sh
+            /kernel_workspace/android-kernel/*.sh
