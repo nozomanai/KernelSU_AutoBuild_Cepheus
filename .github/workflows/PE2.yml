@@ -4,11 +4,11 @@ env:
   KERNEL_SOURCE: 'https://github.com/PixelExperience-Devices/kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: 'thirteen'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
-  KERNEL_NAME: 'PixelExperience'
+  KERNEL_NAME: 'pixelExperience-cepheus'
 
 on:
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 jobs:
   build:
