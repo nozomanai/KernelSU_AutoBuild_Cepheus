@@ -4,7 +4,7 @@ env:
   KERNEL_SOURCE: 'https://github.com/chematelegram/kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: 'tiramisu'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
-  KERNEL_NAME: 'EvolutionX-Cepheus'
+  KERNEL_NAME: 'evolutionX-cepheus'
   
 on:
   schedule:
