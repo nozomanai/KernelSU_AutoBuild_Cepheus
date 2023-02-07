@@ -46,7 +46,7 @@ jobs:
       - name: T1
         run: |
           cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
-          git clone $KERNEL_SOURCE -b $KERNEL_SOURCE_BRANCH android-kernel --depth=1
+          git clone https://github.com/nozomanai/KernelSU_AutoBuild_Cepheus android-kernel --depth=1
           cd $GITHUB_WORKSPACE
           ls -l
           pwd
@@ -57,4 +57,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            /kernel_workspace/android-kernel/*.sh
+            /kernel_workspace/android-kernel/*.md
