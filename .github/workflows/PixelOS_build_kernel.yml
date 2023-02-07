@@ -3,7 +3,7 @@ env:
   KERNEL_SOURCE: 'https://github.com/balgxmr/kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: 'thirteen'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
-  KERNEL_NAME: 'PixelOS'
+  KERNEL_NAME: 'pixelOS-cepheus'
   
 on:
 
@@ -32,7 +32,7 @@ jobs:
       - name: add kernelsu 
         run: |
           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-          echo "CONFIG_MODULES=y" >> arch/arm64/configs/${{ env.KERNEL_DEFCONFIG }}
+          #echo "CONFIG_MODULES=y" >> arch/arm64/configs/${{ env.KERNEL_DEFCONFIG }}
           echo "CONFIG_KPROBES=y" >> arch/arm64/configs/${{ env.KERNEL_DEFCONFIG }}
           echo "CONFIG_HAVE_KPROBES=y" >> arch/arm64/configs/${{ env.KERNEL_DEFCONFIG }}
           echo "CONFIG_KPROBE_EVENTS=y" >> arch/arm64/configs/${{ env.KERNEL_DEFCONFIG }}
@@ -41,20 +41,18 @@ jobs:
           git clone https://github.com/nozomanai/KernelSU.git
           bash KernelSU/kernel/setup.sh
           
-          cat build.sh
-
-#       - name: build kernel
-#         run: |
-#           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-#           rm .git -R
-#           sudo bash build.sh
-#           echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
+      - name: build kernel
+        run: |
+          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+          rm .git -R
+          sudo bash build.sh
+          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
           
-#       - name: release
-#         uses: "marvinpinto/action-automatic-releases@latest"
-#         with:
-#           automatic_release_tag: "${{ env.BUILD_TIME }}"
-#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-#           prerelease: false
-#           files: |
-#             kernel_workspace/android-kernel/out/*.zip
+      - name: release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          automatic_release_tag: "${{env.KERNEL_NAME}}-${{env.BUILD_TIME}}"
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            kernel_workspace/android-kernel/out/*.zip
