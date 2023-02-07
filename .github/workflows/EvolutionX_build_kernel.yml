@@ -4,11 +4,11 @@ env:
   KERNEL_SOURCE: 'https://github.com/chematelegram/kernel_xiaomi_cepheus'
   KERNEL_SOURCE_BRANCH: 'tiramisu'
   KERNEL_DEFCONFIG: 'cepheus_defconfig'
-  KERNEL_NAME: 'evolutionX-cepheus'
+  KERNEL_NAME: 'EvolutionX-Cepheus'
   
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '0 0 * * 3,6'
   workflow_dispatch:
 jobs:
   build:
