@@ -40,19 +40,21 @@ jobs:
           #curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
           git clone https://github.com/nozomanai/KernelSU.git
           bash KernelSU/kernel/setup.sh
-
-      - name: build kernel
-        run: |
-          cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-          rm .git -R
-          sudo bash build.sh
-          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
           
-      - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          automatic_release_tag: "${{ env.BUILD_TIME }}"
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            kernel_workspace/android-kernel/out/*.zip
+          cat build.sh
+
+#       - name: build kernel
+#         run: |
+#           cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+#           rm .git -R
+#           sudo bash build.sh
+#           echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
+          
+#       - name: release
+#         uses: "marvinpinto/action-automatic-releases@latest"
+#         with:
+#           automatic_release_tag: "${{ env.BUILD_TIME }}"
+#           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+#           prerelease: false
+#           files: |
+#             kernel_workspace/android-kernel/out/*.zip
