@@ -43,17 +43,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: run build script
+      - name: T1
         run: |
-          echo "BUILD_TIME=$(TZ=Asia/Shanghai date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
-          #bash scripts/Evasi0nKernelBuild.sh ${{github.event.inputs.KERNEL_SOURCE}} ${{github.event.inputs.KERNEL_SOURCE_BRANCH}} 
-          echo dwa
+          cd $GITHUB_WORKSPACE && mkdir kernel_workspace && cd kernel_workspace
+          git clone $KERNEL_SOURCE -b $KERNEL_SOURCE_BRANCH android-kernel --depth=1
           
       - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          automatic_release_tag: "${{ env.BUILD_TIME }}"
+          automatic_release_tag: "last"
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            kernel_workspace/android-kernel/out/*.zip
+            ${{GITHUB_WORKSPACE}}/kernel_workspace/android-kernel/*.sh
